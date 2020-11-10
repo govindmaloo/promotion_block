@@ -1,0 +1,6 @@
+# Promotion Block menu items definition
+promotion_block.settings:
+  title: Promotion Block
+  description: 'Configure Promotion Block.'
+  route_name: promotion_block.settings
+  parent: system.admin_config_ui

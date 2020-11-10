@@ -1,0 +1,14 @@
+promotion_block.controller:
+  path: '/promotion_block/load'
+  defaults:
+    _controller: '\Drupal\promotion_block\Controller\PromotionBlockController::renderApi'
+  requirements:
+    _permission: 'access content'
+
+promotion_block.settings:
+  path: '/admin/config/user-interface/promotion-block'
+  defaults:
+    _form: '\Drupal\promotion_block\Form\PromotionBlockSettingsForm'
+    _title: 'Promotion block config.'
+  requirements:
+    _permission: 'administer site configuration'

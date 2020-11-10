@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Promotion Block hooks and functions.
+ */
+
+define('PROMOTION_BLOCK_COOKIE_NAME', 'promotion_block_onload_time');
+// This value is specified in seconds.
+define('PROMOTION_BLOCK_COOKIE_LIFETIME', 86400);
+
+/**
+ * Check if cookie is set.
+ */
+function promotion_block_check_cookie() {
+  return isset($_COOKIE[PROMOTION_BLOCK_COOKIE_NAME]);
+}
+
+/**
+ * Implements template_preprocess_page().
+ */
+function promotion_block_preprocess_page(&$variables) {
+  $config = \Drupal::service('config.factory')->getEditable('promotion_block.settings');
+  $is_front = \Drupal::service('path.matcher')->isFrontPage();
+
+  // Load if enabled, frontpage and cookie.
+  if ($is_front && !promotion_block_check_cookie() && $config->get('enable')) {
+    $variables['#attached']['library'][] = 'promotion_block/promotion-block-load';
+  }
+}

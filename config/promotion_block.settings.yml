@@ -1,0 +1,6 @@
+enable: 0
+title: 'Test setings'
+description:
+  value: ''
+  format: ''
+cookie_expire: 86400

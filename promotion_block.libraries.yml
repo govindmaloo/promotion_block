@@ -1,0 +1,8 @@
+promotion-block-load:
+  css:
+    theme:
+      css/promotion-block.css: {}
+  js:
+    js/promotion-block.js: {}
+  dependencies:
+    - core/drupal.dialog
