@@ -5,15 +5,15 @@
  * Promotion Block hooks and functions.
  */
 
-define('PROMOTION_BLOCK_COOKIE_NAME', 'promotion_block_onload_time');
-// This value is specified in seconds.
-define('PROMOTION_BLOCK_COOKIE_LIFETIME', 86400);
+use Drupal\promotion_block\PromotionBlockInterface;
 
 /**
  * Check if cookie is set.
  */
 function promotion_block_check_cookie() {
-  return isset($_COOKIE[PROMOTION_BLOCK_COOKIE_NAME]);
+  $stack = \Drupal::service('request_stack');
+  $cookie = $stack->getCurrentRequest()->cookies->get(PromotionBlockInterface::PROMOTION_BLOCK_COOKIE_NAME);
+  return isset($cookie);
 }
 
 /**

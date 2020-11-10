@@ -8,6 +8,7 @@ use Drupal\Core\Render\RendererInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Cookie;
+use Drupal\promotion_block\PromotionBlockInterface;
 
 /**
  * Implementing Promotion block JSON APi.
@@ -51,7 +52,7 @@ class PromotionBlockController extends ControllerBase implements ContainerInject
     ]);
 
     $cur_time = time();
-    $cookie = new Cookie(PROMOTION_BLOCK_COOKIE_NAME, $cur_time, $cur_time + PROMOTION_BLOCK_COOKIE_LIFETIME, '/');
+    $cookie = new Cookie(PromotionBlockInterface::PROMOTION_BLOCK_COOKIE_NAME, $cur_time, $cur_time + PromotionBlockInterface::PROMOTION_BLOCK_COOKIE_LIFETIME, '/');
     $response->headers->setCookie($cookie);
     $response->sendHeaders();
 

@@ -4,9 +4,10 @@ namespace Drupal\promotion_block\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfigFormBase;
+use Drupal\promotion_block\PromotionBlockInterface;
 
 /**
- * Class PromotionBlockSettingsForm.
+ * Promotion Block configuration form.
  *
  * @package Drupal\promotion_block\Form
  *
@@ -63,7 +64,7 @@ class PromotionBlockSettingsForm extends ConfigFormBase {
       '#type' => 'number',
       '#title' => $this->t('Cookie expire seconds.'),
       '#description' => $this->t('Cookie expire time in seconds.'),
-      '#default_value' => $config->get('cookie_expire') ?? PROMOTION_BLOCK_COOKIE_LIFETIME,
+      '#default_value' => $config->get('cookie_expire') ?? PromotionBlockInterface::PROMOTION_BLOCK_COOKIE_LIFETIME,
       '#required' => TRUE,
     ];
 
